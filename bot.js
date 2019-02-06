@@ -26,7 +26,7 @@ client.on('message', message => { // هاذا للبرودكسات
 		.setFooter(message.author.tag, message.author.avatarURL)
 		
 		message.channel.send(bcSure).then(msg => {
-			msg.react('✅').then(() => msg.react('❎'));
+			msg.react(':yes:').then(() => msg.react(':no:'));
 			message.delete();
 			
 			
