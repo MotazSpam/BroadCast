@@ -1,4 +1,3 @@
-const Discord = require('discord.js');
 const client = new Discord.Client();
 
 
@@ -8,7 +7,7 @@ client.on('ready', () => {
 
 
 client.on('message', message => { // هاذا للبرودكسات
-        var prefix = '^'; // هنا تقدر تغير البرفكس
+        var prefix = '-'; // هنا تقدر تغير البرفكس
 	var command = message.content.split(" ")[0];
 	if(command == prefix + 'bc') { // الكوماند !bc
 		if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don`t have **MANAGE_MESSAGES** permission!");
@@ -26,12 +25,12 @@ client.on('message', message => { // هاذا للبرودكسات
 		.setFooter(message.author.tag, message.author.avatarURL)
 		
 		message.channel.send(bcSure).then(msg => {
-			msg.react(':yes:').then(() => msg.react(':no:'));
+			msg.react('✅').then(() => msg.react('❎'));
 			message.delete();
 			
 			
-			let yesEmoji = (reaction, user) => reaction.emoji.name === ':yes:'  && user.id === message.author.id;
-			let noEmoji = (reaction, user) => reaction.emoji.name === ':no:' && user.id === message.author.id;
+			let yesEmoji = (reaction, user) => reaction.emoji.name === '✅'  && user.id === message.author.id;
+			let noEmoji = (reaction, user) => reaction.emoji.name === '❎' && user.id === message.author.id;
 			
 			let sendBC = msg.createReactionCollector(yesEmoji);
 			let dontSendBC = msg.createReactionCollector(noEmoji);
@@ -40,9 +39,9 @@ client.on('message', message => { // هاذا للبرودكسات
 				        message.guild.members.forEach(m => {
    if(!message.member.hasPermission('ADMINISTRATOR')) return;
             var bc = new Discord.RichEmbed()
-            .addField('»»السيرفر :', `${message.guild.name}`)
-            .addField('»» المرسل : ', `${message.author.username}#${message.author.discriminator}`)
-            .addField('»»  الرسالة : ', args)
+            .addField('» السيرفر :', `${message.guild.name}`)
+            .addField('» المرسل : ', `${message.author.username}#${message.author.discriminator}`)
+            .addField(' » الرسالة : ', args)
             .setColor('#000000')
             // m.send(`[${m}]`);
             m.send(`${m}`,{embed: bc});
@@ -62,3 +61,4 @@ client.on('message', message => { // هاذا للبرودكسات
 
 
 client.login(process.env.BOT_TOKEN);
+
