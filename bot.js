@@ -30,8 +30,8 @@ client.on('message', message => { // هاذا للبرودكسات
 			message.delete();
 			
 			
-			let yesEmoji = (reaction, user) => reaction.emoji.name === '✅'  && user.id === message.author.id;
-			let noEmoji = (reaction, user) => reaction.emoji.name === '❎' && user.id === message.author.id;
+			let yesEmoji = (reaction, user) => reaction.emoji.name === ':yes:'  && user.id === message.author.id;
+			let noEmoji = (reaction, user) => reaction.emoji.name === ':no:' && user.id === message.author.id;
 			
 			let sendBC = msg.createReactionCollector(yesEmoji);
 			let dontSendBC = msg.createReactionCollector(noEmoji);
