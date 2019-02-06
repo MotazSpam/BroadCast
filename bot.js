@@ -13,11 +13,11 @@ client.on('message', message => { // هاذا للبرودكسات
 		if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don`t have **MANAGE_MESSAGES** permission!");
 		var args = message.content.split(' ').slice(1).join(' ');
 		if(message.author.bot) return;
-		if(!args) return message.channel.send(`**➥ Useage:** ${prefix}bc كلامك`);
+		if(!args) return message.channel.send(`**➥ Useage:** ${prefix}bc الوصف`);
 		if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don`t have **MANAGE_MESSAGES** permission!");
 		
 		let bcSure = new Discord.RichEmbed()
-		.setTitle(`:mailbox_with_mail: **هل انت متأكد انك تريد ارسال رسالتك الى** ${message.guild.memberCount} **عضو**`)
+		.setTitle(`:mailbox_with_mail: **هل متأكد من ارسال رسالتك** ${message.guild.memberCount} **عضو**`)
 		.setThumbnail(client.user.avatarURL)
 		.setColor('RANDOM')
 		.setDescription(`**\n:envelope: ➥ رسالتك**\n\n${args}`)
@@ -40,18 +40,18 @@ client.on('message', message => { // هاذا للبرودكسات
    if(!message.member.hasPermission('ADMINISTRATOR')) return;
             var bc = new Discord.RichEmbed()
             .addField('» السيرفر :', `${message.guild.name}`)
-            .addField('» المرسل : ', `${message.author.username}#${message.author.discriminator}`)
-            .addField(' » الرسالة : ', args)
+            .addField('» الراسل : ', `${message.author.username}#${message.author.discriminator}`)
+            .addField(' » الوصف : ', args)
             .setColor('#000000')
             // m.send(`[${m}]`);
             m.send(`${m}`,{embed: bc});
         });
-				message.channel.send(`:timer: **يتم الان الارسال الى** \`\`${message.guild.memberCount}\`\` **عضو**`).then(msg => msg.delete(5000));
+				message.channel.send(`:timer: **سوف يتم الارسال الان الى** \`\`${message.guild.memberCount}\`\` **عضو**`).then(msg => msg.delete(5000));
 				msg.delete();
 			})
 			dontSendBC.on('collect', r => {
 				msg.delete();
-				message.reply(':white_check_mark: **تم الغاء ارسال رسالتك بنجاح**').then(msg => msg.delete(5000));
+				message.reply(':white_check_mark: **سوف يتم الغاء رساتلك حاليا **').then(msg => msg.delete(5000));
 			});
 		})
 	}
